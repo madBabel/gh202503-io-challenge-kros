@@ -25,6 +25,8 @@ jobs:
                 echo "variable=${{inputs.result}}" >> "$GITHUB_OUTPUT"
 
     deploy:
+        needs:
+            - build
         runs-on: ubuntu-latest
         if: ${{ needs.build.outputs.build_status == 'success' }}    
         steps:      
